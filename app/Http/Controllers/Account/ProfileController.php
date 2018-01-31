@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Account\ProfileStoreRequest;
 
 class ProfileController extends Controller
 {
@@ -11,7 +12,10 @@ class ProfileController extends Controller
         return view('account.profile.index');
     }
 
-    public function update()
+    public function store(ProfileStoreRequest $request)
     {
+        $request->user()->update($request->only('name', 'email'));
+
+        return back();
     }
 }

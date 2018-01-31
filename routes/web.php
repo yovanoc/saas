@@ -14,5 +14,5 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
      * Profile
      */
     Route::get('/profile', 'Account\ProfileController@index')->name('profile.index');
-    Route::patch('/profile', 'Account\ProfileController@update')->name('profile.update');
+    Route::post('/profile', 'Account\ProfileController@store')->name('profile.store');
 });
