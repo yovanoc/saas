@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+
+before_script:
+  - cp .env.example .env
+  - composer install --no-interaction
+  - php artisan key:generate
+
+services:
+  - redis-server
+
+cache:
+  directories:
+    - vendor
