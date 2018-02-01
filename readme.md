@@ -1,4 +1,4 @@
-# SaaS [![Build Status](https://travis-ci.org/yovanoc/saas.svg?branch=master)](https://travis-ci.org/yovanoc/saas)
+# SaaS [![Build Status](https://travis-ci.org/yovanoc/saas.svg?branch=master)](https://travis-ci.org/yovanoc/saas) [![StyleCI](https://styleci.io/repos/119753551/shield)]()
 
 Software as a Service (SaaS) starter for Laravel.
 
