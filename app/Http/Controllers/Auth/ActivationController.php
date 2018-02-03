@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\ConfirmationToken;
 use Illuminate\Http\Request;
+use App\Models\ConfirmationToken;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 

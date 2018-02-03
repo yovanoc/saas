@@ -12,6 +12,7 @@ trait HasConfirmationTokens
             'token' => $token = str_random(200),
             'expires_at' => $this->getConfirmationTokenExpiry(),
         ]);
+
         return $token;
     }
 
@@ -20,7 +21,8 @@ trait HasConfirmationTokens
         return $this->hasOne(ConfirmationToken::class);
     }
 
-    protected function getConfirmationTokenExpiry() {
+    protected function getConfirmationTokenExpiry()
+    {
         return $this->freshTimestamp()->addMinutes(10);
     }
 }
