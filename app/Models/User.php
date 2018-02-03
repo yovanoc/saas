@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasConfirmationTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'activated'
     ];
 
     /**
@@ -26,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function hasActivated()
+    {
+        return $this->activated;
+    }
+
+    public function hasNotActivated()
+    {
+        return !$this->hasActivated();
+    }
 }
