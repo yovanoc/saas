@@ -1,5 +1,9 @@
 @extends('account.layouts.default')
 
 @section('account.content')
-Account Overview
+    <div class="card card-default">
+        <div class="card-body">
+            Account overview
+        </div>
+    </div>
 @endsection

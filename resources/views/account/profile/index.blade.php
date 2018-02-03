@@ -2,8 +2,6 @@
 
 @section('account.content')
     <div class="card card-default">
-        <div class="card-header">Login</div>
-
         <div class="card-body">
             <form action="{{ route("account.profile.store") }}" method="post">
                @csrf

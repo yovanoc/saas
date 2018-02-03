@@ -2,9 +2,7 @@
 
 @section('account.content')
     <div class="card card-default">
-        <div class="card-header">Login</div>
-
-        <div class="card-body">
+         <div class="card-body">
             <form action="{{ route("account.password.store") }}" method="post">
                 @csrf
 
