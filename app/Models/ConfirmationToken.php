@@ -9,12 +9,12 @@ class ConfirmationToken extends Model
     public $timestamps = false;
 
     protected $dates = [
-        'expires_at'
+        'expires_at',
     ];
 
     protected $fillable = [
         'token',
-        'expires_at'
+        'expires_at',
     ];
 
     protected static function boot()
@@ -29,12 +29,12 @@ class ConfirmationToken extends Model
         return 'token';
     }
 
-    function user()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    function hasExpired()
+    public function hasExpired()
     {
         return $this->freshTimestamp()->gt($this->expires_at);
     }

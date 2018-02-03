@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
+use App\Http\Controllers\Controller;
 use App\Events\Auth\UserRequestedActivationEmail;
 use App\Http\Requests\Auth\ActivateResendRequest;
-use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ActivationResendController extends Controller
 {

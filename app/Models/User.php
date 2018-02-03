@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'activated'
+        'name', 'email', 'password', 'activated',
     ];
 
     /**
@@ -35,6 +35,6 @@ class User extends Authenticatable
 
     public function hasNotActivated()
     {
-        return !$this->hasActivated();
+        return ! $this->hasActivated();
     }
 }
