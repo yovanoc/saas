@@ -1,34 +1,48 @@
 @extends('account.layouts.default')
 
 @section('account.content')
-    <div class="panel panel-default">
-        <div class="panel-body">
+    <div class="card card-default">
+        <div class="card-header">Login</div>
+
+        <div class="card-body">
             <form action="{{ route("account.profile.store") }}" method="post">
-                {{ csrf_field() }}
-                
-                <div class="form-group{{ $errors->has('name') ? ' has-error': '' }}">
-                    <label for="name" class="control-label">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name', auth()->user()->name) }}">
+               @csrf
 
-                    @if ($errors->has('name'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('name') }}</strong>
-                        </span>
-                    @endif
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                    <div class="col-md-6">
+                        <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name', auth()->user()->name) }}" required autofocus>
+
+                        @if ($errors->has('name'))
+                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('email') ? ' has-error': '' }}">
-                    <label for="email" class="control-label">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email', auth()->user()->email) }}">
+                <div class="form-group row">
+                    <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
+                    <div class="col-md-6">
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', auth()->user()->email) }}" required>
+
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update</button>
+                <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary">
+                            Update
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

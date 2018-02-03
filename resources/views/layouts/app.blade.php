@@ -14,15 +14,22 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        @include ('layouts.partials._navigation')
+<div id="app">
+    @include ('layouts.partials._navigation')
 
+    <main class="py-4">
         <div class="container">
-            @yield('content')
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    @include('layouts.partials.alerts._alerts')
+                </div>
+            </div>
         </div>
-    </div>
+        @yield('content')
+    </main>
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

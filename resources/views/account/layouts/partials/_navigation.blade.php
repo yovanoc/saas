@@ -1,11 +1,5 @@
-<ul class="nav nav-pills nav-stacked">
-    <li>
-        <a href="{{ route("account.index") }}">Account overview</a>
-    </li>
-    <li>
-        <a href="{{ route("account.profile.index") }}">Profile</a>
-    </li>
-    <li>
-        <a href="{{ route("account.password.index") }}">Change password</a>
-    </li>
-</ul>
+<div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+    <a class="nav-link" href="{{ route("account.index") }}">Account overview</a>
+    <a class="nav-link" href="{{ route("account.profile.index") }}">Profile</a>
+    <a class="nav-link" href="{{ route("account.password.index") }}">Change password</a>
+</div>
