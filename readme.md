@@ -11,7 +11,7 @@ Software as a Service (SaaS) starter for Laravel.
 Begin by cloning this repository to your machine, and installing all Composer & NPM dependencies.
 
 ```bash
-git clone git@github.com:yovanoc/saas.git
+git clone https://github.com/yovanoc/saas
 cd saas && composer install && npm install
 npm run dev
 ```

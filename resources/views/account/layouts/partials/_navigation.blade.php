@@ -5,4 +5,7 @@
     <li>
         <a href="{{ route("account.profile.index") }}">Profile</a>
     </li>
+    <li>
+        <a href="{{ route("account.password.index") }}">Change password</a>
+    </li>
 </ul>
