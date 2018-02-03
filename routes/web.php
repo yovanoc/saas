@@ -26,10 +26,18 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
 });
 
 /*
- * Activation
+ * Account Activation
  */
 Route::group(['prefix' => 'activation', 'as' => 'activation.', 'middleware' => ['guest']], function () {
     Route::get('/resend', 'Auth\ActivationResendController@index')->name('resend');
     Route::post('/resend', 'Auth\ActivationResendController@store')->name('resend.store');
     Route::get('/{confirmation_token}', 'Auth\ActivationController@activate')->name('activate');
+});
+
+/*
+ * Plans
+ */
+Route::group(['prefix' => 'plans', 'as' => 'plans.'], function () {
+    Route::get('/', 'Subscription\PlanController@index')->name('index');
+    Route::get('/teams', 'Subscription\PlanTeamController@index')->name('teams.index');
 });
