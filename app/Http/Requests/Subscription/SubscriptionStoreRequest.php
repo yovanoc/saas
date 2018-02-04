@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Subscription;
 
+use Illuminate\Validation\Rule;
 use App\Rules\ValidStripeCoupon;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class SubscriptionStoreRequest extends FormRequest
 {

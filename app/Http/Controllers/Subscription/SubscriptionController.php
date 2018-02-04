@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Subscription;
 
-use App\Http\Requests\Subscription\SubscriptionStoreRequest;
 use App\Models\Plan;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Subscription\SubscriptionStoreRequest;
 
 class SubscriptionController extends Controller
 {

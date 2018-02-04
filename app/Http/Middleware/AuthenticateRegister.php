@@ -17,6 +17,7 @@ class AuthenticateRegister
     {
         if (! auth()->check()) {
             session()->put('url.intended', $request->url());
+
             return redirect('/register');
         }
 
