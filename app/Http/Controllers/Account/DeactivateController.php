@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\Http\Requests\Account\DeactivateAccountRequest;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Account\DeactivateAccountRequest;
 
 class DeactivateController extends Controller
 {
