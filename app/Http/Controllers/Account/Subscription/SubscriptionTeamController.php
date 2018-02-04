@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Account\Subscription;
 
-use App\Http\Requests\Account\SubscriptionTeamUpdateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Account\SubscriptionTeamUpdateRequest;
 
 class SubscriptionTeamController extends Controller
 {

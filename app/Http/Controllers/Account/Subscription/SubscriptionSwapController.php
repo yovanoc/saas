@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Account\Subscription;
 
-use App\Http\Requests\Subscription\SubscriptionSwapStoreRequest;
 use App\Models\Plan;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Subscription\SubscriptionSwapStoreRequest;
 
 class SubscriptionSwapController extends Controller
 {

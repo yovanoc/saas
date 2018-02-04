@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Account\Subscription;
 
-use App\Http\Requests\Account\SubscriptionTeamMemberStoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Account\SubscriptionTeamMemberStoreRequest;
 
 class SubscriptionTeamMemberController extends Controller
 {
@@ -16,7 +16,7 @@ class SubscriptionTeamMemberController extends Controller
         }
 
         $request->user()->team->users()->syncWithoutDetaching([
-            User::where('email', $request->email)->first()->id
+            User::where('email', $request->email)->first()->id,
         ]);
 
         return back()->withSuccess('Team member added.');

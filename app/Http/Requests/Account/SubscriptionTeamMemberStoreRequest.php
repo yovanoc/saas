@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Account;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class SubscriptionTeamMemberStoreRequest extends FormRequest
 {
@@ -27,8 +27,8 @@ class SubscriptionTeamMemberStoreRequest extends FormRequest
         return [
             'email' => [
                 'required',
-                Rule::exists('users', 'email')->whereNot('email',  $this->user()->email),
-            ]
+                Rule::exists('users', 'email')->whereNot('email', $this->user()->email),
+            ],
         ];
     }
 }
