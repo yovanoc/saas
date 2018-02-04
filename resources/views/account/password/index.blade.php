@@ -10,7 +10,7 @@
                     <label for="password_current" class="col-md-4 col-form-label text-md-right">Current password</label>
 
                     <div class="col-md-6">
-                        <input id="password_current" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_current" required>
+                        <input id="password_current" type="password" class="form-control{{ $errors->has('password_current') ? ' is-invalid' : '' }}" name="password_current" required>
 
                         @if ($errors->has('password_current'))
                             <span class="invalid-feedback">
@@ -38,7 +38,7 @@
                     <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">New password again</label>
 
                     <div class="col-md-6">
-                        <input id="password_confirmation" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation" required>
+                        <input id="password_confirmation" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" required>
 
                         @if ($errors->has('password_confirmation'))
                             <span class="invalid-feedback">
