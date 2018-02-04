@@ -15,3 +15,11 @@ git clone https://github.com/yovanoc/saas
 cd saas && composer install && npm install
 npm run dev
 ```
+
+### Step 2
+
+```bash
+cp .env.example .env
+```
+
+After that, replace all configuration needed into the .env file.

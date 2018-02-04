@@ -7,7 +7,7 @@
                 <ul class="list-group">
                     @foreach($plans as $plan)
                         <li class="list-group-item">
-                            <a href="#">{{ $plan->name }} ({{ $plan->price }}€)</a>
+                            <a href="{{ route('subscription.index') }}?plan={{ $plan->slug  }}">{{ $plan->name }} ({{ $plan->price }}€)</a>
                         </li>
                     @endforeach
 
