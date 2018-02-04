@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Laravel\Cashier\Billable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {

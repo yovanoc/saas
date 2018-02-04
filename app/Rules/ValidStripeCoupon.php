@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Stripe\Coupon;
+use Illuminate\Contracts\Validation\Rule;
 
 class ValidStripeCoupon implements Rule
 {
@@ -31,6 +31,7 @@ class ValidStripeCoupon implements Rule
         } catch (\Exception $e) {
             return false;
         }
+
         return true;
     }
 
