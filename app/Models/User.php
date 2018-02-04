@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Traits\HasSubscriptions;
 use Laravel\Cashier\Billable;
+use Laravel\Cashier\Subscription;
+use App\Models\Traits\HasSubscriptions;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Cashier\Subscription;
 
 class User extends Authenticatable
 {

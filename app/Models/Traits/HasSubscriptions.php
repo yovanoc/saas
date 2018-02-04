@@ -36,7 +36,7 @@ trait HasSubscriptions
 
     public function doesNotHaveSubscription()
     {
-        return !$this->hasSubscription();
+        return ! $this->hasSubscription();
     }
 
     public function hasCancelled()
@@ -46,7 +46,7 @@ trait HasSubscriptions
 
     public function hasNotCancelled()
     {
-        return !$this->hasCancelled();
+        return ! $this->hasCancelled();
     }
 
     public function isCustomer()

@@ -24,7 +24,7 @@ class SubscriptionSwapStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'plan' => 'required|exists:plans,gateway_id'
+            'plan' => 'required|exists:plans,gateway_id',
         ];
     }
 }

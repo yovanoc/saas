@@ -14,7 +14,7 @@ class Plan extends Model
 
     public function isNotForTeams()
     {
-        return !$this->isForTeams();
+        return ! $this->isForTeams();
     }
 
     public function scopeActive(Builder $builder)
