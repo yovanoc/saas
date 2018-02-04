@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasSubscriptions;
 use Laravel\Cashier\Billable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Cashier\Subscription;
 
 class User extends Authenticatable
 {
-    use Billable, Notifiable, HasConfirmationTokens;
+    use Billable, Notifiable, HasConfirmationTokens, HasSubscriptions;
 
     /**
      * The attributes that are mass assignable.
@@ -37,5 +39,32 @@ class User extends Authenticatable
     public function hasNotActivated()
     {
         return ! $this->hasActivated();
+    }
+
+    public function team()
+    {
+        return $this->hasOne(Team::class);
+    }
+
+    public function plan()
+    {
+        return $this->plans->first();
+    }
+
+    public function getPlanAttribute()
+    {
+        return $this->plan();
+    }
+
+    public function plans()
+    {
+        return $this->hasManyThrough(
+            Plan::class, Subscription::class, 'user_id', 'gateway_id', 'id', 'stripe_plan'
+        )->orderBy('subscriptions.created_at', 'desc');
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class);
     }
 }

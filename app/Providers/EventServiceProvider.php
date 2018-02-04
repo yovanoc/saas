@@ -15,6 +15,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\Auth\UserSignedUp' => [
             'App\Listeners\Auth\SendActivationEmail',
+            'App\Listeners\Auth\CreateDefaultTeam',
         ],
         'App\Events\Auth\UserRequestedActivationEmail' => [
             'App\Listeners\Auth\SendActivationEmail',
