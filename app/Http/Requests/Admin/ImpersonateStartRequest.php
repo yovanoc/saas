@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Admin;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ImpersonateStartRequest extends FormRequest
 {
@@ -28,7 +28,7 @@ class ImpersonateStartRequest extends FormRequest
             'email' => [
                 'required', 'email',
                 Rule::exists('users', 'email')->whereNot('email', $this->user()->email),
-            ]
+            ],
         ];
     }
 }

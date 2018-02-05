@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Traits\HasRoles;
 use Laravel\Cashier\Billable;
+use App\Models\Traits\HasRoles;
 use Laravel\Cashier\Subscription;
 use App\Models\Traits\HasSubscriptions;
 use Illuminate\Notifications\Notifiable;
