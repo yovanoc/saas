@@ -61,6 +61,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <div class="col-md-6 offset-md-4">
+                                        <input class="form-check-input{{ $errors->has('terms') ? ' is-invalid' : '' }}" type="checkbox" id="terms" name="terms" required>
+                                        <label class="form-check-label" for="terms">
+                                            I accept the <a href="#" target="_blank">terms of service</a>
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            You must agree before submitting.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
