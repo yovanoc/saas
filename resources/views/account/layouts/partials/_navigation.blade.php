@@ -4,6 +4,7 @@
     <a class="nav-link {{ return_if(on_page('account/password'), 'active') }}" href="{{ route("account.password.index") }}">Change password</a>
     <a class="nav-link {{ return_if(on_page('account/deactivate'), 'active') }}" href="{{ route("account.deactivate.index") }}">Deactivate account</a>
     <a class="nav-link {{ return_if(on_page('account/twofactor'), 'active') }}" href="{{ route("account.twofactor.index") }}">Two factor authentication</a>
+    <a class="nav-link {{ return_if(on_page('account/tokens'), 'active') }}" href="{{ route("account.tokens.index") }}">API Tokens</a>
 </div>
 
 @subscribed

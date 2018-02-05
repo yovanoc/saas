@@ -11,10 +11,11 @@ use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Traits\HasTwoFactorAuthentication;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Billable, Notifiable, HasConfirmationTokens, HasSubscriptions, SoftDeletes, HasTwoFactorAuthentication, HasRoles;
+    use Billable, Notifiable, HasConfirmationTokens, HasSubscriptions, SoftDeletes, HasTwoFactorAuthentication, HasRoles, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
