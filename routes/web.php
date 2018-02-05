@@ -4,35 +4,66 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth']], function () {
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+    Route::get('/impersonate', 'ImpersonateController@index');
+    Route::post('/impersonate', 'ImpersonateController@start')->name('impersonate.start');
 });
 
-/*
+Route::delete('/admin/impersonate', 'Admin\ImpersonateController@destroy')->name('admin.impersonate.destroy');
+
+Route::group(['middleware' => ['auth', 'subscription.active']], function () {
+    Route::get('/dashboard', 'DashboardController@index');
+});
+
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/login/twofactor', 'Auth\TwoFactorLoginController@index')->name('login.twofactor.index');
+    Route::post('/login/twofactor', 'Auth\TwoFactorLoginController@verify')->name('login.twofactor.verify');
+});
+
+/**
  * Account
  */
 Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.', 'namespace' => 'Account'], function () {
     Route::get('/', 'AccountController@index')->name('index');
-    /*
+
+    /**
      * Profile
      */
-    Route::get('/profile', 'ProfileController@index')->name('profile.index');
-    Route::post('/profile', 'ProfileController@store')->name('profile.store');
-    /*
+    Route::get('profile', 'ProfileController@index')->name('profile.index');
+    Route::post('profile', 'ProfileController@store')->name('profile.store');
+
+    /**
      * Password
      */
-    Route::get('/password', 'PasswordController@index')->name('password.index');
-    Route::post('/password', 'PasswordController@store')->name('password.store');
-    /*
-     * Deactive
+    Route::get('password', 'PasswordController@index')->name('password.index');
+    Route::post('password', 'PasswordController@store')->name('password.store');
+
+    /**
+     * Tokens
+     */
+    Route::get('tokens', 'TokenController@index')->name('tokens.index');
+
+    /**
+     * Deactivate
      */
     Route::get('deactivate', 'DeactivateController@index')->name('deactivate.index');
     Route::post('deactivate', 'DeactivateController@store')->name('deactivate.store');
-    /*
+
+    /**
+     * Two factor
+     */
+    Route::group([], function () {
+        Route::get('/twofactor', 'TwoFactorController@index')->name('twofactor.index');
+        Route::post('/twofactor', 'TwoFactorController@store')->name('twofactor.store');
+        Route::post('/twofactor/verify', 'TwoFactorController@verify')->name('twofactor.verify');
+        Route::delete('/twofactor', 'TwoFactorController@destroy')->name('twofactor.destroy');
+    });
+
+    /**
      * Subscription
      */
     Route::group(['prefix' => 'subscription', 'namespace' => 'Subscription', 'middleware' => ['subscription.owner']], function () {
-        /*
+        /**
          * Cancel
          */
         Route::group(['middleware' => 'subscription.notcancelled'], function () {
@@ -40,7 +71,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
             Route::post('/cancel', 'SubscriptionCancelController@store')->name('subscription.cancel.store');
         });
 
-        /*
+        /**
          * Resume
          */
         Route::group(['middleware' => 'subscription.cancelled'], function () {
@@ -48,7 +79,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
             Route::post('/resume', 'SubscriptionResumeController@store')->name('subscription.resume.store');
         });
 
-        /*
+        /**
          * Swap
          */
         Route::group(['middleware' => 'subscription.notcancelled'], function () {
@@ -56,7 +87,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
             Route::post('/swap', 'SubscriptionSwapController@store')->name('subscription.swap.store');
         });
 
-        /*
+        /**
          * Card
          */
         Route::group(['middleware' => 'subscription.customer'], function () {
@@ -64,7 +95,7 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
             Route::post('/card', 'SubscriptionCardController@store')->name('subscription.card.store');
         });
 
-        /*
+        /**
          * Team
          */
         Route::group(['middleware' => ['subscription.team']], function () {
@@ -75,10 +106,11 @@ Route::group(['prefix' => 'account', 'middleware' => ['auth'], 'as' => 'account.
             Route::delete('/team/member/{user}', 'SubscriptionTeamMemberController@destroy')->name('subscription.team.member.destroy');
         });
     });
+
 });
 
-/*
- * Account Activation
+/**
+ * Account activation.
  */
 Route::group(['prefix' => 'activation', 'as' => 'activation.', 'middleware' => ['guest']], function () {
     Route::get('/resend', 'Auth\ActivationResendController@index')->name('resend');
@@ -86,7 +118,7 @@ Route::group(['prefix' => 'activation', 'as' => 'activation.', 'middleware' => [
     Route::get('/{confirmation_token}', 'Auth\ActivationController@activate')->name('activate');
 });
 
-/*
+/**
  * Subscription plans.
  */
 Route::group(['prefix' => 'plans', 'as' => 'plans.', 'middleware' => 'subscription.inactive'], function () {
@@ -94,10 +126,17 @@ Route::group(['prefix' => 'plans', 'as' => 'plans.', 'middleware' => 'subscripti
     Route::get('/teams', 'Subscription\PlanTeamController@index')->name('teams.index');
 });
 
-/*
+/**
  * Subscription
  */
 Route::group(['prefix' => 'subscription', 'as' => 'subscription.', 'middleware' => ['auth.register', 'subscription.inactive']], function () {
     Route::get('/', 'Subscription\SubscriptionController@index')->name('index');
     Route::post('/', 'Subscription\SubscriptionController@store')->name('store');
 });
+
+/**
+ * Webhooks
+ */
+
+Route::post('/webhooks/stripe', 'Webhooks\StripeWebhookController@handleWebhook');
+

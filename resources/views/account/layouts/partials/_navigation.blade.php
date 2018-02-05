@@ -3,6 +3,7 @@
     <a class="nav-link {{ return_if(on_page('account/profile'), 'active') }}" href="{{ route("account.profile.index") }}">Profile</a>
     <a class="nav-link {{ return_if(on_page('account/password'), 'active') }}" href="{{ route("account.password.index") }}">Change password</a>
     <a class="nav-link {{ return_if(on_page('account/deactivate'), 'active') }}" href="{{ route("account.deactivate.index") }}">Deactivate account</a>
+    <a class="nav-link {{ return_if(on_page('account/twofactor'), 'active') }}" href="{{ route("account.twofactor.index") }}">Two factor authentication</a>
 </div>
 
 @subscribed

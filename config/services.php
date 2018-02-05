@@ -35,4 +35,8 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'authy' => [
+        'secret' => env('AUTHY_SECRET'),
+    ],
+
 ];

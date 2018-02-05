@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasTwoFactorAuthentication;
 use Laravel\Cashier\Billable;
 use Laravel\Cashier\Subscription;
 use App\Models\Traits\HasSubscriptions;
@@ -12,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Billable, Notifiable, HasConfirmationTokens, HasSubscriptions, SoftDeletes;
+    use Billable, Notifiable, HasConfirmationTokens, HasSubscriptions, SoftDeletes, HasTwoFactorAuthentication;
 
     /**
      * The attributes that are mass assignable.

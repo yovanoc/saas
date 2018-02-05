@@ -14,12 +14,20 @@ class BladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::if('impersonating', function () {
+            return session()->has('impersonate');
+        });
+
+        Blade::if('admin', function () {
+            return auth()->user()->hasRole('admin');
+        });
+
         Blade::if('subscribed', function () {
             return auth()->user()->hasSubscription();
         });
 
         Blade::if('notsubscribed', function () {
-            return ! auth()->check() || auth()->user()->doesNotHaveSubscription();
+            return !auth()->check() || auth()->user()->doesNotHaveSubscription();
         });
 
         Blade::if('subscriptioncancelled', function () {
@@ -35,7 +43,7 @@ class BladeServiceProvider extends ServiceProvider
         });
 
         Blade::if('notpiggybacksubscription', function () {
-            return ! auth()->user()->hasPiggyBackSubscription();
+            return !auth()->user()->hasPiggyBackSubscription();
         });
     }
 
