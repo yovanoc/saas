@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\ImpersonateStartRequest;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ImpersonateStartRequest;
 
 class ImpersonateController extends Controller
 {
