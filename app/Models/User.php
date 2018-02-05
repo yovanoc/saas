@@ -5,13 +5,13 @@ namespace App\Models;
 use Laravel\Cashier\Billable;
 use App\Models\Traits\HasRoles;
 use Laravel\Cashier\Subscription;
+use Laravel\Passport\HasApiTokens;
 use App\Models\Traits\HasSubscriptions;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Traits\HasTwoFactorAuthentication;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
