@@ -62,7 +62,7 @@ class LoginController extends Controller
     {
         session()->put('twofactor', (object) [
             'user_id' => $user->id,
-            'remember' => $request->has('remember')
+            'remember' => $request->has('remember'),
         ]);
 
         $this->guard()->logout();

@@ -19,10 +19,10 @@ class Authy implements TwoFactor
     {
         try {
             $response = $this->client->request(
-                'POST', 'https://api.authy.com/protected/json/users/new?api_key=' . config('services.authy.secret'), [
+                'POST', 'https://api.authy.com/protected/json/users/new?api_key='.config('services.authy.secret'), [
                     'form_params' => [
-                        'user' => $this->getTwoFactorRegistrationDetails($user)
-                    ]
+                        'user' => $this->getTwoFactorRegistrationDetails($user),
+                    ],
                 ]
             );
         } catch (Exception $e) {
@@ -36,7 +36,7 @@ class Authy implements TwoFactor
     {
         try {
             $response = $this->client->request(
-                'GET', 'https://api.authy.com/protected/json/verify/' . $token . '/' . $user->twoFactor->identifier . '?force=true&api_key=' . config('services.authy.secret')
+                'GET', 'https://api.authy.com/protected/json/verify/'.$token.'/'.$user->twoFactor->identifier.'?force=true&api_key='.config('services.authy.secret')
             );
         } catch (Exception $e) {
             return false;
@@ -51,7 +51,7 @@ class Authy implements TwoFactor
     {
         try {
             $response = $this->client->request(
-                'POST', 'https://api.authy.com/protected/json/users/delete/' . $user->twoFactor->identifier . '?api_key=' . config('services.authy.secret')
+                'POST', 'https://api.authy.com/protected/json/users/delete/'.$user->twoFactor->identifier.'?api_key='.config('services.authy.secret')
             );
         } catch (Exception $e) {
             return false;

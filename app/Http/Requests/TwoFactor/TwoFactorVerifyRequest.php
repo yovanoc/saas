@@ -3,8 +3,8 @@
 namespace App\Http\Requests\TwoFactor;
 
 use App\Models\User;
-use App\Rules\ValidTwoFactorToken;
 use App\TwoFactor\TwoFactor;
+use App\Rules\ValidTwoFactorToken;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TwoFactorVerifyRequest extends FormRequest
@@ -39,8 +39,8 @@ class TwoFactorVerifyRequest extends FormRequest
 
         return [
             'token' => [
-                'required', new ValidTwoFactorToken($this->user(), $this->twoFactor)
-            ]
+                'required', new ValidTwoFactorToken($this->user(), $this->twoFactor),
+            ],
         ];
     }
 
