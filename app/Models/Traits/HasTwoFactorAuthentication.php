@@ -13,11 +13,11 @@ trait HasTwoFactorAuthentication
 
     public function twoFactorPendingVerification()
     {
-        if (!$this->twoFactor) {
+        if (! $this->twoFactor) {
             return false;
         }
 
-        return !$this->twoFactor->isVerified();
+        return ! $this->twoFactor->isVerified();
     }
 
     public function twoFactorEnabled()

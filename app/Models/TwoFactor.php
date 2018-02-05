@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TwoFactor extends Model
 {
     protected $fillable = [
-        'phone', 'dial_code', 'identifier', 'verified'
+        'phone', 'dial_code', 'identifier', 'verified',
     ];
 
     public static function boot()

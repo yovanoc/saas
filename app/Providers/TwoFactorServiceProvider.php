@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use GuzzleHttp\Client;
 use App\TwoFactor\Authy;
 use App\TwoFactor\TwoFactor;
-use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 
 class TwoFactorServiceProvider extends ServiceProvider

@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\Traits\HasTwoFactorAuthentication;
 use Laravel\Cashier\Billable;
 use Laravel\Cashier\Subscription;
 use App\Models\Traits\HasSubscriptions;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Traits\HasConfirmationTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Traits\HasTwoFactorAuthentication;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable

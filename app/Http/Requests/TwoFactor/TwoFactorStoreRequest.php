@@ -25,7 +25,7 @@ class TwoFactorStoreRequest extends FormRequest
     {
         return [
             'dial_code' => 'required|exists:countries,dial_code',
-            'phone_number' => 'required'
+            'phone_number' => 'required',
         ];
     }
 }
