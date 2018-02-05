@@ -35,6 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\Impersonate::class,
         ],
 
         'api' => [
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'subscription.customer' => \App\Http\Middleware\Subscription\RedirectIfNotCustomer::class,
         'subscription.team' => \App\Http\Middleware\Subscription\RedirectIfNoTeamPlan::class,
         'subscription.owner' => \App\Http\Middleware\Subscription\RedirectIfPiggyBackSubscription::class,
+        'admin' => \App\Http\Middleware\Admin::class,
     ];
 }
