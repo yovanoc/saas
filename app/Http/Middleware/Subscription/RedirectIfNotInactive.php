@@ -15,7 +15,7 @@ class RedirectIfNotInactive
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->hasSubscription()) {
+        if (optional(auth()->user())->hasSubscription()) {
             return redirect()->route('account.index');
         }
 
